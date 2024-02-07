@@ -2,12 +2,8 @@ let input = document.getElementById('input');
 let btns = document.querySelectorAll('.btns');
 
 function calculate(para) {
-let num = para.split(/[+\-*/]/).map(parseFloat);
-let symbols = para.match(/[+\-*/]/g);
-
-if (!symbols || num[0] == '') {
-    return 'Error';
-}
+let num = para.split(/[+\-X/]/).map(parseFloat);
+let symbols = para.match(/[+\-X/]/g);
 
 let result = num[0];
 for (let i = 0; i < symbols.length; i++) {
@@ -21,7 +17,7 @@ for (let i = 0; i < symbols.length; i++) {
         case '-':
         result = result -number;
             break;
-        case '*':
+        case 'X':
         result = result *number;
             break;
         case '/':
