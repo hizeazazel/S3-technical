@@ -53,6 +53,7 @@ btns[i].addEventListener('click', function() {
         case '&lt;':
             if (bool == true) {
                 input.value = "";
+                bool = false;
             } else {
                 input.value = input.value.slice(0, -1);
             }
