@@ -5,7 +5,7 @@ function calculate(para) {
 let num = para.split(/[+\-*/]/).map(parseFloat);
 let symbols = para.match(/[+\-*/]/g);
 
-if (!symbols || num[0] === '' || num[1] === '') {
+if (!symbols || num[0] == '') {
     return 'Error';
 }
 
@@ -25,7 +25,7 @@ for (let i = 0; i < symbols.length; i++) {
         result = result *number;
             break;
         case '/':
-        if (symbol === '/' && number === 0) {
+        if (symbol == '/' && number == 0) {
             return 'Error';
         }
         result = result /number;
