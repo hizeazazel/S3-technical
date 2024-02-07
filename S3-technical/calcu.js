@@ -2,36 +2,38 @@ let input = document.getElementById('input');
 let btns = document.querySelectorAll('.btns');
 
 function calculate(para) {
-let result;
-let num = para.split(/[+\-*/]/);
-let symbol = para.match(/[+\-*/]/);
+let num = para.split(/[+\-*/]/).map(parseFloat);
+let symbols = para.match(/[+\-*/]/g);
 
-    if (!symbol || num[0] === '' || num[1] === '') {
-        return 'Error';
-    }
+if (!symbols || num[0] === '' || num[1] === '') {
+    return 'Error';
+}
 
-let num1 = parseFloat(num[0]);
-let num2 = parseFloat(num[1]);
-    switch (symbol[0]) {
+let result = num[0];
+for (let i = 0; i < symbols.length; i++) {
+    let symbol = symbols[i];
+    let number = num[i + 1];
+
+    switch (symbol) {
         case '+':
-        result = num1+num2;
+        result =result + number;
             break;
         case '-':
-        result = num1-num2;
+        result = result -number;
             break;
         case '*':
-        result = num1 *num2;
+        result = result *number;
             break;
         case '/':
-        if (num2 !== 0) {
-                result = num1/ num2;
-            } else {
-                result= 'Error';
-            }
+        if (symbol === '/' && number === 0) {
+            return 'Error';
+        }
+        result = result /number;
             break;
         default:
-        result = 'Error';
+            return 'Error';
     }
+}
 return result;
 }
 
